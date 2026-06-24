@@ -1,0 +1,46 @@
+# Xcode user state
+*.xcuserstate
+*.xcscmblueprint
+xcuserdata/
+*.xcuserdatad/
+
+# Build products
+DerivedData/
+build/
+Build/
+.build/
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
+
+# CocoaPods / Carthage / fastlane local output
+Pods/
+Carthage/Build/
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Signing, provisioning and local capabilities
+*.mobileprovision
+*.provisionprofile
+*.p12
+*.cer
+*.certSigningRequest
+*.developerprofile
+JBalance/JBalance.entitlements
+
+# Local secrets and machine-specific config
+.env
+.env.*
+*.xcconfig.local
+*.local.xcconfig
+Secrets.plist
+GoogleService-Info.plist
+
+# macOS
+.DS_Store
