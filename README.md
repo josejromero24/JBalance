@@ -5,7 +5,7 @@
 JBalance es una app iOS para llevar el control de peso, comida, hidratación, actividad y recordatorios sin depender de una cuenta externa. Los datos principales viven en local y la app solo pide permisos cuando una función los necesita.
 
 <p align="center">
-  <img src="JBalance/Assets.xcassets/assets/jbalance_demo.gif" alt="JBalance demo" width="900" />
+  <img src="assets/jbalance_demo.gif" alt="JBalance demo" width="900" />
 </p>
 
 ## Qué Hace
