@@ -61,4 +61,4 @@ Ejecuta los tests desde Xcode con el scheme `JBalance`.
 
 ## Licencia
 
-MIT. Ver [`LICENSE`](LICENSE).
+Ver [`LICENSE`](LICENSE).
