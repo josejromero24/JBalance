@@ -49,6 +49,11 @@ struct OnboardingView: View {
 
     private var welcomeCard: some View {
         VStack(alignment: .leading, spacing: 18) {
+            Image("AppLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 96, height: 82)
+                .accessibilityHidden(true)
             Text("Configura JBalance")
                 .font(.system(size: 32, weight: .bold))
                 .foregroundStyle(JBalancePalette.textOnHeroPrimary)

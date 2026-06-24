@@ -1,97 +1,64 @@
 # JBalance
 
-JBalance is an iOS app for tracking weight, nutrition habits, hydration, activity, reminders and simple recipe ideas from a clean, privacy-conscious interface.
+<img src="JBalance/Assets.xcassets/AppLogo.imageset/LogoApp2.png" width="96" alt="JBalance logo">
 
-The app is built with SwiftUI and follows a layered architecture inspired by Clean Architecture, MVVM and Use Cases.
+JBalance es una app iOS para llevar el control de peso, comida, hidratación, actividad y recordatorios sin depender de una cuenta externa. Los datos principales viven en local y la app solo pide permisos cuando una función los necesita.
 
-## Features
+## Qué Hace
 
-- Weight tracking with history, trends and goal progress.
-- Food diary with meal notes, quick food signals and daily nutrition insights.
-- Hydration logging with common container presets.
-- Activity summaries from local entries and optional Health data import.
-- Local reminders for weight, water, evening check-ins, missing logs and custom alerts.
-- Recipe suggestions based on available ingredients.
-- Food photo analysis using on-device platform APIs where available.
-- Backup import/export for user data.
+- Registra peso, objetivo, evolución y tendencias.
+- Guarda comidas con notas, señales rápidas y análisis nutricional local.
+- Controla hidratación con cantidades habituales.
+- Resume actividad con entradas locales o datos importados desde Salud.
+- Programa recordatorios locales para peso, agua, check-ins y registros pendientes.
+- Sugiere recetas a partir de ingredientes disponibles.
+- Analiza fotos de comida con APIs del dispositivo cuando están disponibles.
+- Exporta e importa copias de seguridad.
 
-## Architecture
-
-The project is organized by responsibility:
+## Proyecto
 
 ```text
 JBalance/
-  App/           App entry point and dependency composition
-  Core/          Design system, platform wrappers and shared support
-  Domain/        Models, repository contracts, services and use cases
-  Data/          Repository implementations and remote/local data access
-  Presentation/  SwiftUI views and ViewModels
-JBalanceTests/   Unit and ViewModel tests
-JBalanceUITests/ UI automation tests
+  App/           Entrada de la app y composición de dependencias
+  Core/          Diseño, soporte de plataforma y recursos compartidos
+  Domain/        Modelos, contratos, servicios y casos de uso
+  Data/          Repositorios e integración local/remota
+  Presentation/  Vistas SwiftUI y ViewModels
+JBalanceTests/   Tests unitarios y de ViewModels
+JBalanceUITests/ Tests de interfaz
 ```
 
-Key rules:
+La arquitectura está separada por capas: `Presentation` coordina estado y UI, `Domain` concentra reglas y contratos, y `Data` implementa persistencia e integraciones. Más detalle en [`JBalance/ARCHITECTURE.md`](JBalance/ARCHITECTURE.md).
 
-- `Domain` stays independent from UI, persistence and platform frameworks.
-- ViewModels coordinate UI state and call Use Cases.
-- Use Cases depend on repository protocols.
-- Concrete repositories and platform services are composed in `App/JBalanceDependencies.swift`.
-- Remote clients and persistence live outside `Domain`.
+## Privacidad
 
-More details are available in [`JBalance/ARCHITECTURE.md`](JBalance/ARCHITECTURE.md).
+- Perfil, peso, comida, hidratación, actividad y recordatorios se guardan en local.
+- Salud/HealthKit es opcional y requiere permiso del usuario.
+- Los recordatorios son notificaciones locales.
+- Open Food Facts solo se usa cuando se hace una búsqueda de producto por código de barras.
 
-## Privacy
+## Requisitos
 
-JBalance is designed around local-first data handling.
+- Xcode 26 o superior recomendado.
+- Proyecto configurado con SDK iOS 26.
+- Swift 5.
 
-- Core profile, weight, food, hydration, activity and reminder data is stored locally.
-- Health data access is optional and requires user permission.
-- Notifications are local notifications, not push notifications.
-- Barcode/product lookup uses Open Food Facts when a barcode is available and network access is used.
+Para ejecutar en dispositivo físico, configura tu equipo de firma en Xcode. HealthKit y otras capacidades pueden requerir entitlements locales.
 
-## Requirements
+## Ejecutar
 
-- Xcode 26 or newer recommended.
-- iOS 26 SDK project settings are currently used.
-- Swift 5 project setting.
+```bash
+git clone https://github.com/josejromero24/JBalance.git
+cd JBalance
+open JBalance.xcodeproj
+```
 
-Some capabilities, such as Health data access, require configuring your own Apple Developer Team and entitlements locally before running on a physical device.
-
-## Getting Started
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/josejromero24/JBalance.git
-   cd JBalance
-   ```
-
-2. Open the project in Xcode:
-
-   ```bash
-   open JBalance.xcodeproj
-   ```
-
-3. Select the `JBalance` scheme.
-4. Configure your signing team locally in Xcode if you want to run on a device.
-5. Build and run.
+Selecciona el scheme `JBalance`, configura firma si hace falta y ejecuta.
 
 ## Tests
 
-The project includes:
+Ejecuta los tests desde Xcode con el scheme `JBalance`.
 
-- Domain tests for local analysis and business behavior.
-- Presentation tests for ViewModel behavior.
-- UI automation tests for launch flows.
+## Licencia
 
-Run the unit test target from Xcode with the `JBalance` scheme.
-
-## Repository Notes
-
-Signing credentials, provisioning profiles, local Xcode user state, generated build products and machine-specific files are intentionally ignored.
-
-If you enable capabilities such as HealthKit locally, keep those signing changes out of public commits unless you intentionally want to publish them.
-
-## License
-
-Add a license before publishing if you want to define how others may use this code. MIT is a simple default for open-source projects.
+MIT. Ver [`LICENSE`](LICENSE).
