@@ -32,7 +32,6 @@ fastlane/test_output/
 *.cer
 *.certSigningRequest
 *.developerprofile
-JBalance/JBalance.entitlements
 
 # Local secrets and machine-specific config
 .env

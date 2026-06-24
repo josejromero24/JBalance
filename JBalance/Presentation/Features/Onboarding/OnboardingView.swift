@@ -27,6 +27,10 @@ struct OnboardingView: View {
                 }
             }
             .toolbar(.hidden, for: .navigationBar)
+            .safeAreaInset(edge: .top) {
+                JBalancePalette.backgroundTop
+                    .frame(height: 8)
+            }
             .safeAreaInset(edge: .bottom) {
                 VStack(spacing: 10) {
                     Button("Guardar y continuar") {
